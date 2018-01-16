@@ -20,7 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        //createPlanetObject()
+        createPlanetObject()
         
         createDiceObject()
         
@@ -57,7 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func createPlanetObject() {
         
-        let sunObject = SCNSphere(radius: 0.5)
+        let sunObject = SCNSphere(radius: 0.9)
         let earthObject = SCNSphere(radius: 0.2)
         let moonObject = SCNSphere(radius: 0.1)
         
@@ -77,9 +77,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let earthNode = SCNNode()
         let moonNode = SCNNode()
         
-        sunNode.position = SCNVector3(x: 0, y: 0.5, z: -2)
-        earthNode.position = SCNVector3(x: 0.5, y: 0.3, z: -1)
-        moonNode.position = SCNVector3(x: 0.7, y: 0.1, z: -0.5)
+        sunNode.position = SCNVector3(x: 0, y: 0, z: -2)
+        earthNode.position = SCNVector3(x: 0.5, y: 0.4, z: -1)
+        moonNode.position = SCNVector3(x: 0.6, y: 0.3, z: -0.5)
         
         sunNode.geometry = sunObject
         earthNode.geometry = earthObject
