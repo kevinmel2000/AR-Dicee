@@ -55,7 +55,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func create3DObject() {
         
-        let sunObject = SCNSphere(radius: 0.3)
+        let sunObject = SCNSphere(radius: 0.5)
         let earthObject = SCNSphere(radius: 0.2)
         let moonObject = SCNSphere(radius: 0.1)
         
@@ -63,9 +63,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let earthMaterial = SCNMaterial()
         let moonMaterial = SCNMaterial()
         
-        sunMaterial.diffuse.contents = UIImage(named: "art.scnassets/sun-texture-2k.jpg")
-        earthMaterial.diffuse.contents = UIImage(named: "art.scnassets/earth-texture-2k.jpg")
-        moonMaterial.diffuse.contents = UIImage(named: "art.scnassets/moon-texture-2k.jpg")
+        sunMaterial.diffuse.contents = UIImage(named: "art.scnassets/planet/sun-texture-2k.jpg")
+        earthMaterial.diffuse.contents = UIImage(named: "art.scnassets/planet/earth-texture-2k.jpg")
+        moonMaterial.diffuse.contents = UIImage(named: "art.scnassets/planet/moon-texture-2k.jpg")
         
         sunObject.materials = [sunMaterial]
         earthObject.materials = [earthMaterial]
