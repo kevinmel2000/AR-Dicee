@@ -75,8 +75,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let earthNode = SCNNode()
         let moonNode = SCNNode()
         
-        sunNode.position = SCNVector3(x: 0, y: 0.5, z: -0.9)
-        earthNode.position = SCNVector3(x: 0.5, y: 0.3, z: -0.7)
+        sunNode.position = SCNVector3(x: 0, y: 0.5, z: -2)
+        earthNode.position = SCNVector3(x: 0.5, y: 0.3, z: -1)
         moonNode.position = SCNVector3(x: 0.7, y: 0.1, z: -0.5)
         
         sunNode.geometry = sunObject
