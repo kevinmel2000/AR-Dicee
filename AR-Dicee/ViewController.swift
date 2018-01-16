@@ -20,7 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        createPlanetObject()
+        //createPlanetObject()
         
         createDiceObject()
         
@@ -94,9 +94,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func createDiceObject() {
         
-        let diceScene = SCNScene(named: "art.scnassets/dice/diceCollada.scn")
+        let diceScene = SCNScene(named: "art.scnassets/dice/diceCollada.scn")!
         
-        if let diceNode = diceScene?.rootNode.childNode(withName: "Dice", recursively: true) {
+        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
             
             diceNode.position = SCNVector3(x: 0, y: 0, z: 0.1)
             
