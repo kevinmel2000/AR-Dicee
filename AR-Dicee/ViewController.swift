@@ -20,7 +20,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        create3DObject()
+        createPlanetObject()
+        
+        createDiceObject()
         
         // Show statistics such as fps and timing information
         //sceneView.showsStatistics = true
@@ -53,7 +55,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    func create3DObject() {
+    func createPlanetObject() {
         
         let sunObject = SCNSphere(radius: 0.5)
         let earthObject = SCNSphere(radius: 0.2)
@@ -86,6 +88,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(sunNode)
         sceneView.scene.rootNode.addChildNode(earthNode)
         sceneView.scene.rootNode.addChildNode(moonNode)
+        
+        sceneView.autoenablesDefaultLighting = true
+    }
+    
+    func createDiceObject() {
+        
+        let diceScene = SCNScene(named: "art.scnassets/dice/diceCollada.scn")
+        
+        if let diceNode = diceScene?.rootNode.childNode(withName: "Dice", recursively: true) {
+            
+            diceNode.position = SCNVector3(x: 0, y: 0, z: 0.1)
+            
+            sceneView.scene.rootNode.addChildNode(diceNode)
+        }
         
         sceneView.autoenablesDefaultLighting = true
     }
