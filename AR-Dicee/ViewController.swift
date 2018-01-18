@@ -25,7 +25,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         createDiceObject()
         
         // Show statistics such as fps and timing information
-        //sceneView.showsStatistics = true
+        sceneView.showsStatistics = true
         
         // Create a new scene
         //let scene = SCNScene(named: "art.scnassets/ship.scn")!
