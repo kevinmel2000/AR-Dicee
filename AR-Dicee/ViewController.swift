@@ -24,8 +24,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         //createPlanetObject()
         
-        createDiceObject()
-        
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
@@ -96,10 +94,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
             
-            if !results.isEmpty {
-                print("touched the plane")
-            } else {
-                print("touched somewhere else")
+            if let hitResult = results.first {
+                
+                createDiceObject(on: hitResult)
             }
         }
     }
@@ -141,13 +138,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.autoenablesDefaultLighting = true
     }
     
-    func createDiceObject() {
+    func createDiceObject(on hitTestResult : ARHitTestResult) {
         
         let diceScene = SCNScene(named: "art.scnassets/dice/diceCollada.scn")!
         
         if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
             
-            diceNode.position = SCNVector3(x: 0, y: 0, z: 0.1)
+            diceNode.position = SCNVector3(
+                x: hitTestResult.worldTransform.columns.3.x,
+                y: hitTestResult.worldTransform.columns.3.y,
+                z: hitTestResult.worldTransform.columns.3.z
+            )
             
             sceneView.scene.rootNode.addChildNode(diceNode)
         }
