@@ -146,7 +146,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             diceNode.position = SCNVector3(
                 x: hitTestResult.worldTransform.columns.3.x,
-                y: hitTestResult.worldTransform.columns.3.y,
+                y: hitTestResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
                 z: hitTestResult.worldTransform.columns.3.z
             )
             
