@@ -17,6 +17,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -55,6 +57,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+        if anchor is ARAnchor {
+            print("Plane detected")
+        } else {
+            return
+        }
     }
     
     func createPlanetObject() {
