@@ -111,6 +111,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rollAll()
     }
     
+    @IBAction func removeAllDices(_ sender: UIBarButtonItem) {
+        
+        if !dices.isEmpty {
+            for dice in dices {
+                dice.removeFromParentNode()
+            }
+        }
+    }
+    
     func createPlanetObject() {
         
         let sunObject = SCNSphere(radius: 0.9)
