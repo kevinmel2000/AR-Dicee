@@ -43,6 +43,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print("AR Orientation is supported? \(AROrientationTrackingConfiguration.isSupported)")
         print("AR World Tracking is supported? \(ARWorldTrackingConfiguration.isSupported)")
         print("AR Face Tracking is supported? \(ARFaceTrackingConfiguration.isSupported)")
+        
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
