@@ -11,6 +11,8 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    
+    var dices = [SCNNode]()
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -101,6 +103,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @IBAction func rollDicesAgain(_ sender: UIBarButtonItem) {
+        rollAll()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        rollAll()
+    }
+    
     func createPlanetObject() {
         
         let sunObject = SCNSphere(radius: 0.9)
@@ -150,21 +160,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 z: hitTestResult.worldTransform.columns.3.z
             )
             
+            dices.append(diceNode)
+            
             sceneView.scene.rootNode.addChildNode(diceNode)
             
-            let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
-            let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
-            
-            diceNode.runAction(
-                SCNAction.rotateBy(
-                    x: CGFloat(randomX * 5),
-                    y: 0,
-                    z: CGFloat(randomZ * 5),
-                    duration: 0.5
-                )
-            )
+            roll(diceNode)
         }
         
         sceneView.autoenablesDefaultLighting = true
+    }
+    
+    func rollAll() {
+        if !dices.isEmpty {
+            for dice in dices {
+                roll(dice)
+            }
+        }
+    }
+    
+    func roll(_ dice : SCNNode) {
+        
+        let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
+        let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
+        
+        dice.runAction(
+            SCNAction.rotateBy(
+                x: CGFloat(randomX * 5),
+                y: 0,
+                z: CGFloat(randomZ * 5),
+                duration: 0.5
+            )
+        )
     }
 }
